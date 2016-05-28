@@ -1,0 +1,7 @@
+#!/usr/bin/env lua5.1
+
+x = require('uci_facts')
+y = x.facts()
+
+table.foreach(y, print)
+print('done')
