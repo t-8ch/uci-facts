@@ -28,14 +28,20 @@ add_library(uci-facts-lua uci-facts-lua.c)
 target_include_directories(uci-facts-lua PUBLIC ${LUA_INCLUDE_DIRS})
 target_link_libraries(uci-facts-lua uci-facts ${LUA_LIBRARIES})
 install(FILES $<TARGET_FILE:uci-facts-lua>
-	RENAME uci-facts.so
+	RENAME uci_facts.so
 	DESTINATION ${LUA_CMOD_DESTINATION})
 install(FILES gluon-announce.lua
 	RENAME uci_facts
 	DESTINATION lib/gluon/announce/nodeinfo.d)
 
+enable_testing()
+
 add_executable(uci-facts-test uci-facts-test.c)
 target_link_libraries(uci-facts-test uci-facts)
+add_test(NAME uci-facts-test COMMAND uci-facts-test)
 
 add_executable(uci-facts-respondd-test uci-facts-respondd-test.c)
 target_link_libraries(uci-facts-respondd-test uci-facts-respondd)
+add_test(NAME uci-facts-respondd-test COMMAND uci-facts-respondd-test)
+
+add_test(NAME uci-facts-lua-test COMMAND uci-facts-lua-test)
