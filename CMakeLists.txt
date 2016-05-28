@@ -30,6 +30,9 @@ target_link_libraries(uci-facts-lua uci-facts ${LUA_LIBRARIES})
 install(FILES $<TARGET_FILE:uci-facts-lua>
 	RENAME uci-facts.so
 	DESTINATION ${LUA_CMOD_DESTINATION})
+install(FILES gluon-announce.lua
+	RENAME uci_facts
+	DESTINATION lib/gluon/announce/nodeinfo.d)
 
 add_executable(uci-facts-test uci-facts-test.c)
 target_link_libraries(uci-facts-test uci-facts)
